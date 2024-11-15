@@ -36,7 +36,7 @@ function renderElements(element) {
           >
             <img
               className="w-5 h-5 transition-transform duration-600 ease-in-out hover:scale-110"
-              src="/lattes.svg"
+              src="/./img/lattes.svg"
               alt="Lattes"
             />
           </a>

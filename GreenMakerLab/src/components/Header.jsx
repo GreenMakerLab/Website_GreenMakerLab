@@ -39,7 +39,7 @@ function Header() {
       >
         <div className={`flex items-center xs:gap-0 xs:text-sm sm:gap-5 text-lg ${isScrolled ? 'justify-center' : ''}`}>
           <Link to="/" className="transition-transform duration-600 ease-in-out hover:scale-110">
-            <img src="/./public/logo.png" alt="Logo Image" className="max-w-[70px] h-auto sm:block xs:hidden" />
+            <img src="/./img/logo.png" alt="Logo Image" className="max-w-[70px] h-auto sm:block xs:hidden" />
           </Link>
           {!isScrolled && <h1 className="m-0 text-2xl hidden md:block">GREEN MAKER LAB</h1>}
           <nav className="flex items-center gap-5 xl:text-lg xs:text-sm ">
