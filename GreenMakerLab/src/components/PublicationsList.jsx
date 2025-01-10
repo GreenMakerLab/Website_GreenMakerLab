@@ -34,7 +34,7 @@ function PublicationsList() {
                 <svg  className="inline-flex items-center size-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" d="m21 21-5.197-5.197m0 0A7.5 7.5 0 1 0 5.196 5.196a7.5 7.5 0 0 0 10.607 10.607Z" />
                 </svg>
-                <input type="text" id="search-bar" placeholder="search..."  
+                <input type="text" id="search-bar" placeholder="Pesquisa..."  
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
                 className="ml-2 p-2 border rounded-md shadow-sm w-full max-w-md"/> 
@@ -54,7 +54,7 @@ function PublicationsList() {
                                 onClick={() => toggleShowMore(index)}
                                 className="mt-4 text-blue-600 hover:underline"
                             >
-                                for more
+                                Saiba mais
                             </button>
                             {article.showMore && (
                                 <p  className="mt-2 leading-relaxed">
@@ -64,7 +64,7 @@ function PublicationsList() {
                                     )}
                                     {article.pdf && (
                                         <a href={article.pdf} target="_blank">
-                                            <img src="./public/pdf.svg" alt="pdf" className="inline ml-2"/>
+                                            <img src="./img/pdf.svg" alt="pdf" className="inline ml-2"/>
                                         </a>
                                     )}
                                 </p>
