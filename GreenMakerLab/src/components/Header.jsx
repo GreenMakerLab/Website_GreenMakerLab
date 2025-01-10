@@ -44,19 +44,19 @@ function Header() {
           {!isScrolled && <h1 className="m-0 text-2xl hidden md:block">GREEN MAKER LAB</h1>}
           <nav className="flex items-center gap-5 xl:text-lg xs:text-sm ">
             <Link to="/" className="topics text-white font-bold transition-transform duration-300 ease-in-out hover:scale-110 hover:underline">
-              Home
+              Página inicial
             </Link>
             <Link to="/publications" className="topics text-white font-bold transition-transform duration-300 ease-in-out hover:scale-110 hover:underline">
-              Publications
+              Publicações
             </Link>
             <Link to="/team" className="topics text-white font-bold transition-transform duration-300 ease-in-out hover:scale-110 hover:underline">
-              Team
+              Time
             </Link>
             <Link to="/about-us" className="topics text-white font-bold transition-transform duration-300 ease-in-out hover:scale-110 hover:underline">
-              About Us
+              Sobre nós
             </Link>
             <Link to="/tableperiodic" className="topics text-white font-bold transition-transform duration-300 ease-in-out hover:scale-105  hover:underline">
-            { isMobileView ? "PTSGC": "Periodic Table of Sustainable Green Chemistry"}
+            { isMobileView ? "PTSGC": "Tabela periódica da química verde e sustentável"}
             </Link>
           </nav>
         </div>

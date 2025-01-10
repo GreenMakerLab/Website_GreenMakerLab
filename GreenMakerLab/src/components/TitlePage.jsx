@@ -9,19 +9,19 @@ function UsePageTitle() {
 
     switch (location.pathname) {
       case '/':
-        document.title = 'Home - Green Maker Lab';
+        document.title = 'Página inicial - Green Maker Lab';
         break;
       case '/publications':
-        document.title = 'Publications - Green Maker Lab';
+        document.title = 'Publicações - Green Maker Lab';
         break;
       case '/team':
-        document.title = 'Team - Green Maker Lab';
+        document.title = 'Time - Green Maker Lab';
         break;
       case '/about-us':
-        document.title = 'About Us - Green Maker Lab';
+        document.title = 'Sobre nós - Green Maker Lab';
         break;
       case '/tableperiodic':
-        document.title = 'Table Periodic - Green Maker Lab';
+        document.title = 'Tabela Periódica - Green Maker Lab';
         break;
       default:
         document.title = 'Green Maker Lab';

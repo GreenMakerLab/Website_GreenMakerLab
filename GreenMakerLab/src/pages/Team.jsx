@@ -50,7 +50,7 @@ function Team() {
     return(
         <section className="min-h-screen">
             <div className="p-5 bg-white mx-5 my-3 rounded-lg shadow-lg" >
-                <h2 className="text-3xl font-bold text-center mb-8">Team</h2>
+                <h2 className="text-3xl font-bold text-center mb-8">Time</h2>
                 <div className="flex flex-col gap-8">
                     {TeamList.map(renderElements)}
                 </div>
