@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 
-//Função usada para mudar o titulo cada vez que o usuário viaja para um novo tópico do header
+//Função usada para mudar o titulo da página cada vez que o usuário viaja para um novo tópico do header
 function UsePageTitle() {
   const location = useLocation();
 
@@ -20,8 +20,8 @@ function UsePageTitle() {
       case '/about-us':
         document.title = 'Sobre nós - Green Maker Lab';
         break;
-      case '/tableperiodic':
-        document.title = 'Tabela Periódica - Green Maker Lab';
+      case '/TPQVS':
+        document.title = 'Tabela Periódica da química verde e sustentável - Green Maker Lab';
         break;
       default:
         document.title = 'Green Maker Lab';

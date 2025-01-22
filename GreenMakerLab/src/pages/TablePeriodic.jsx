@@ -15,11 +15,11 @@ function TablePeriodic() {
       ) : ( 
         <div className="flex  justify-center mx-auto min-h-screen bg-Periodic">
           <div className="w-full">
-            <div className="flex flex-row justify-evenly font-bold xl:gap-40 xs:gap-10 text-white text-center">
-              <Link to="/Humanitarian" className="w-1/4 xs:text-[10px] xl:text-lg  transition-transform duration-600 ease-in-out hover:scale-110">
+            <div className="flex flex-row justify-evenly font-bold xl:gap-40 xs:gap-10 text-white text-center ">
+              <Link to="/Humanitarian" className="w-1/4 mb-5  xs:text-[10px] xl:text-lg  transition-transform duration-600 ease-in-out hover:scale-110 ">
                 <h3>Elementos <br /> Humanitários</h3>
               </Link>
-              <div className="relative group w-1/4 xl:ml-20 xs:ml-4 xs:text-[10px] xl:text-lg            transition-transform  duration-600 ease-in-out hover:scale-105 z-10">
+              <div className="relative group w-1/4 h-10 xl:ml-20 xs:ml-4 xs:text-[10px] xl:text-lg      transition-transform  duration-600 ease-in-out hover:scale-105 z-10">
                 <Link 
                   to="/GreenChemistry" 
                 >
@@ -82,7 +82,7 @@ function TablePeriodic() {
                     </ul>
                   </div>
                 </div>
-              <div className="relative group  w-1/4  xs:ml-4 xs:text-[10px] xl:text-lg  transition-transform duration-600 ease-in-out hover:scale-105 z-10 ">
+              <div className="relative group  w-1/4 h-12  xs:ml-4 xs:text-[10px] xl:text-lg  transition-transform duration-600 ease-in-out hover:scale-105 z-10 ">
                 <Link to="/EnablingSystem" >  
                   <h3>Elementos de habilitação <br />das condições do sistema </h3>
                 </Link>

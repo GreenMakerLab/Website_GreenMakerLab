@@ -5,9 +5,9 @@ export const TeamList = [
         {
                 name:  "Afonso Serafim Jacinto ", post: "Co-líder", description: "Possui graduação em Computação pela Universidade Estadual da Paraíba (2018) e mestrado em Tecnologia da Informação pelo Instituto Federal de Educação, Ciência e Tecnologia da Paraíba (2024). Atualmente é professor do Instituto Federal da Paraíba - IFPB atuando na área de Informática, com ênfase em Desenvolvimento de Software, Jogos Digitais e Educação em Computação.", img:"/./img/Afonso.png", curriculum:"http://lattes.cnpq.br/1535037984412459"
         },
-        {
-                name: "André Alexandre Honorio da Silveira", post: "Membro", description:"Graduando em Licenciatura em Química pelo IFPB- Campus Sousa, membro do grupo de pesquisa Green Maker Lab deste mesmo campus, atuou no Programa Institucional de Bolsa de Iniciação a Docência no período 2023-2024. Formado no curso técnico em Agroindústria pelo IFPB- Campus Sousa, tendo estágio com ênfase na área de Leite e derivados, e análises Físico-Químicas com conhecimento de Informática básica.", img: "/./img/Andre.png", curriculum:" http://lattes.cnpq.br/6886352419255408"
-        }, 
+        // {
+        //         name: "André Alexandre Honorio da Silveira", post: "Membro", description:"Graduando em Licenciatura em Química pelo IFPB- Campus Sousa, membro do grupo de pesquisa Green Maker Lab deste mesmo campus, atuou no Programa Institucional de Bolsa de Iniciação a Docência no período 2023-2024. Formado no curso técnico em Agroindústria pelo IFPB- Campus Sousa, tendo estágio com ênfase na área de Leite e derivados, e análises Físico-Químicas com conhecimento de Informática básica.", img: "/./img/Andre.png", curriculum:" http://lattes.cnpq.br/6886352419255408"
+        // }, 
         {
                 name: "Daiane Dantas da Silva", post: "Membro", description: "Possui ensino-medio-segundo-graupela José de Paiva Gadelha(2018).", img:"/./img/Daiane.png", curriculum:"https://lattes.cnpq.br/6831782165818587",
         },

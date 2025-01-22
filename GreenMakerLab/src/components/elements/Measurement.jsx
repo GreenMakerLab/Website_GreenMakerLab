@@ -20,7 +20,7 @@ export default function Measurement() {
         ) : (
           <section className="mx-auto min-h-screen p-3 bg-Periodic">
           <div className="flex flex-col sm:flex-row justify-evenly items-start">
-          <Link to="/tableperiodic"> 
+          <Link to="/TPQVS"> 
             <button 
               className="bg-buttom text-white font-bold py-2 px-6 rounded-md shadow-lg transition-transform transform hover:scale-105 hover:bg-opacity-90 mb-6">
               Voltar à Tabela

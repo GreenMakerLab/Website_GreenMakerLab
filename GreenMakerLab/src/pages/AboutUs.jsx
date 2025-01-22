@@ -3,7 +3,7 @@ function AboutUs() {
     return(
         <section id="about-us" className="p-5 bg-white m-4 rounded-lg shadow-lg">
         <h2 className="text-2xl font-bold mb-4">Sobre nós:</h2>
-        <p>Informações sobre o grupo...</p>
+        {/* <p>Informações sobre o grupo...</p> */}
         <div id="address" className="mt-4">
             <h3 className="text-xl font-semibold mb-2">Endereço:</h3>
             <p className="leading-9">

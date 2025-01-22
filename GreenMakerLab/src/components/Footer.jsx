@@ -1,9 +1,13 @@
+import { useTranslation } from 'react-i18next';
+
 function Footer() {
+    const { t } = useTranslation();
+
     return (
         <footer className="bg-green-800 text-white w-full py-8 relative ">
             <div className="flex flex-col items-center xs:pr-5 ">
                 <div className="flex gap-2 items-center">
-                Siga-nos
+                    {t("footer.followUs")}
                     <a href="https://www.instagram.com/green_maker_lab/?igsh=OWJydmpjcWg3eTBp" target="_blank" className="topics hover:scale-110 hover:underline">
                         <img src="/./img/insta.svg" alt="Instagram" className="w-5 h-5 transition-transform duration-300"/>
                     </a>
@@ -12,7 +16,7 @@ function Footer() {
                     </a>
                 </div>
                 <p className="m-0 text-center mr-3 xs:mr-12">
-                    © Developed by Jefferson Teodoro - 2024
+                    © {t("footer.developed")}
                 </p>
             </div>
 

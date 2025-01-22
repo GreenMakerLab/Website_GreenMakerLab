@@ -26,7 +26,7 @@ import NobleElements from './components/elements/NobleElements';
 const routes = [
     { path: "/", element: <Home /> },
     { path: "publications", element: <Publications /> },
-    { path: "tableperiodic", element: <TablePeriodic /> },
+    { path: "TPQVS", element: <TablePeriodic /> },
     { path: "team", element: <Team /> },
     { path: "about-us", element: <AboutUs /> },
     { path: "Humanitarian", element: <Humanitarian /> },
