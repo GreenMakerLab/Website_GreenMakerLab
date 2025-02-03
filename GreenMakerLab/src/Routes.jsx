@@ -3,6 +3,8 @@ import Publications from './pages/Publications';
 import Team from './pages/Team';
 import AboutUs from './pages/AboutUs';
 import TablePeriodic from './pages/TablePeriodic';
+import AdminPanel from './pages/adminPanel';
+import Login from './pages/Login.jsx';
 import Humanitarian from './components/elements/Humanitarian';
 import GreenChemistry from './components/elements/GreenChemistry';
 import PreventWaste from './components/elements/PreventWaste';
@@ -29,6 +31,8 @@ const routes = [
     { path: "TPQVS", element: <TablePeriodic /> },
     { path: "team", element: <Team /> },
     { path: "about-us", element: <AboutUs /> },
+    {path: "login", element: <Login/>  },
+    {path: "adminPanel", element: <AdminPanel/>},
     { path: "Humanitarian", element: <Humanitarian /> },
     { path: "GreenChemistry", element: <GreenChemistry /> },
     { path: "PreventWaste", element: <PreventWaste /> },

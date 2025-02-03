@@ -39,7 +39,7 @@ function Header() {
       >
         <div className={`flex items-center xs:gap-0 xs:text-sm sm:gap-5 text-lg ${isScrolled ? 'justify-center' : ''}`}>
           <Link to="/" className="transition-transform duration-600 ease-in-out hover:scale-110">
-            <img src="/./img/logo.png" alt="Logo Image" className="max-w-[70px] h-auto sm:block xs:hidden" />
+            <img src="/img/logo.png" alt="Logo Image" className="max-w-[70px] h-auto sm:block xs:hidden" />
           </Link>
           {!isScrolled && (
             <h1 className="m-0 text-2xl hidden md:block">
@@ -85,7 +85,7 @@ function Header() {
               className="text-white flex  font-bold ml-2 transition-transform duration-300 ease-in-out hover:scale-125 "
               >
                 EN
-                <img className='' src="/./img/EUA.png" alt="" />
+                <img className='' src="/img/EUA.png" alt="" />
               </button>
              
             </div>
@@ -96,7 +96,7 @@ function Header() {
                 className="text-white flex font-bold ml-2  transition-transform duration-300 ease-in-out hover:scale-125 "
               >
                 PT
-                <img  src="/./img/BR.png" alt="" />
+                <img  src="/img/BR.png" alt="" />
 
               </button>
             </div>

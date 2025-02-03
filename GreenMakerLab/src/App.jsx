@@ -3,7 +3,6 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import UsePageTitle from './components/TitlePage';
 import routes from './Routes';
-
 function App() {
     return (
         <section className="font-sans m-0 p-0">

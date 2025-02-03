@@ -1,28 +1,35 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { getArticles } from "../api";
+
 
 function PublicationsList() {
-    // Lista de artigos
-    const [articles, setArticles] = useState([
-        {
-            title: "The Role of the Periodic Table of the Elements of Green and Sustainable Chemistry in a High School Educational Context",
-            resume: "A Tabela Periódica dos Elementos da Química Verde e Sustentável (PT-GSC) representa uma ferramenta potencialmente significativa para o ensino e a aprendizagem da Química Verde.",
-            content: "No entanto, há uma falta de estudos explorando a aplicação da PT-GSC em contextos educacionais. Para contribuir para preencher essa lacuna, uma abordagem qualitativa e participante foi desenvolvida para examinar os efeitos do uso da PT-GSC em um ambiente de ensino médio, com foco na análise dos desafios e oportunidades associados. Durante um período de cinco semanas, 23 alunos do ensino médio matriculados em um curso de química em uma escola pública no Brasil trabalharam em pequenos grupos para desenvolver soluções para um estudo de caso abordando questões sociocientíficas relacionadas à escassez de água na região local usando elementos da PT-GSC. Os resultados dos questionários pré e pós, juntamente com as resoluções escritas do estudo de caso, fornecem evidências dos ganhos de conhecimento dos alunos, particularmente em alfabetização científica crítica para a Educação em Química Verde e Sustentável. As descobertas mostraram que a PT-GSC é uma ferramenta interdisciplinar para introduzir os alunos aos conceitos de Química Verde dentro do ecossistema social e científico mais amplo. A implementação de novos estudos de caso incorporando elementos do PT-GSC é uma forma de apoiar nosso trabalho contínuo com alunos e o público, contribuindo para um futuro sustentável.",
-            doi: "https://doi.org/10.3390/su16062504",
-            pdf: "https://drive.google.com/file/d/15WJCTJGo2Q8emOunJrk2y6r3xNOyNGx3/view?usp=sharing",
-            showMore: false
-        },
-        
-    ]);
+    const [articles, setArticles] = useState([])
+    const [searchTerm, setSearchTerm] = useState("")
 
+    useEffect(() => {
+        const fetchArticles = async () => {
+            const data = await getArticles()
+            
+            const sortedArticles = [...data].sort((a, b) => 
+                new Date(b.date) - new Date(a.date)
+            )
 
-    const toggleShowMore = (index) => {
-        setArticles(articles.map((article, i) => 
-            i === index ? { ...article, showMore: !article.showMore } : article
+            const articlesWithShowMore = sortedArticles.map(article => ({
+                ...article,
+                showMore: false
+            }))
+
+            setArticles(articlesWithShowMore)
+        }
+        fetchArticles()
+    }, [])
+    const toggleShowMore = (id) => {
+        setArticles(articles.map(article => 
+            article.id === id 
+                ? { ...article, showMore: !article.showMore } 
+                : article
         ));
     };
-
- 
-    const [searchTerm, setSearchTerm] = useState("");
 
     const filteredArticles = articles.filter(article =>
         article.title.toLowerCase().includes(searchTerm.toLowerCase())
@@ -43,15 +50,15 @@ function PublicationsList() {
                 <h3 className="text-xl font-normal mb-4">ARTIGOS PUBLICADOS</h3>
             )}
             <div id="articles-container" className="space-y-8">
-                    {filteredArticles.map((article, index) => (
-                        <div key={index} className="article p-6 bg-white shadow rounded-md" data-title={article.title}>
+                    {filteredArticles.map((article) => (
+                        <div key={article.id} className="article p-6 bg-white shadow rounded-md" data-title={article.title}>
                             <h2 className="text-2xl font-serif mb-4">{article.title}</h2>
                             <p className="font-bold mb-2">Resumo:</p>
                         <span>
                             {article.resume}
                             <button
                                 id="forMore"
-                                onClick={() => toggleShowMore(index)}
+                                onClick={() => toggleShowMore(article.id)}
                                 className="mt-4 text-blue-600 hover:underline"
                             >
                                 Saiba mais
