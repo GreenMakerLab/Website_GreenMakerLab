@@ -17,7 +17,7 @@ app = Flask(__name__, static_folder='../dist', static_url_path='')
 
 CORS(
     app,
-    resources={r"/api/*": {"origins": "https://GreenMakerLab.onrender.com"}},
+    resources={r"/api/*": {"origins": ["http://localhost:5173", "https://GreenMakerLab.onrender.com"]}},
     supports_credentials=True,
     allow_headers=["Authorization", "Content-Type"],
     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"]
@@ -29,7 +29,6 @@ jwt = JWTManager(app)
 app.secret_key = secrets.token_hex(16)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.getenv("DATABASE_URL")
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-
 db = SQLAlchemy(app)
 
 # Modelo de Artigos
@@ -68,16 +67,6 @@ with app.app_context():
         db.session.add(admin_user)
         db.session.commit()
 
-@app.route('/')
-def serve_home():
-    return send_from_directory(app.static_folder, 'index.html')
-
-@app.route('/<path:path>')
-def serve_static(path):
-    if os.path.exists(os.path.join(app.static_folder, path)):
-        return send_from_directory(app.static_folder, path)
-    else:
-        return send_from_directory(app.static_folder, 'index.html')
 
 # Endpoint de login
 @app.route('/api/login', methods=['POST'])
@@ -138,24 +127,35 @@ def get_articles():
 @jwt_required()
 def create_article():
     data = request.get_json()
+
+    # Validação dos campos obrigatórios
     if not data or 'title' not in data or 'resume' not in data or 'content' not in data or 'date' not in data:
-        return jsonify({'message': 'Campos obrigatórios faltando!'}), 400
+        return jsonify({
+            'message': 'Campos obrigatórios faltando!',
+            'missing_fields': ['title', 'resume', 'content', 'date']
+        }), 400
 
     try:
         new_article = Articles(
             title=data['title'],
             resume=data['resume'],
             content=data['content'],
-            doi=data.get('doi'),  
+            doi=data.get('doi'),
             date=datetime.strptime(data['date'], '%Y-%m-%d').date()
         )
         db.session.add(new_article)
         db.session.commit()
-        return jsonify({'message': 'Artigo criado com sucesso!'}), 201
+        return jsonify({
+            'message': 'Artigo criado com sucesso!',
+            'article_id': new_article.id  
+        }), 201
     except Exception as e:
-        db.session.rollback() 
-        return jsonify({'message': 'Erro ao criar artigo.', 'error': str(e)}), 500
-
+        db.session.rollback()
+        return jsonify({
+            'message': 'Erro interno do servidor',
+            'error': str(e)
+        }), 500
+        
 # Endpoint para excluir um artigo
 @app.route('/api/articles/<int:id>', methods=['DELETE'])
 @jwt_required()
@@ -165,6 +165,20 @@ def delete_article(id):
     db.session.commit()
     return jsonify({'message': 'Artigo deletado com sucesso!'})
 
+
+@app.route('/')
+def serve_home():
+    return send_from_directory(app.static_folder, 'index.html')
+
+@app.route('/team')
+def team():
+    return send_from_directory(app.static_folder, 'team.html')
+
+@app.route('/<path:path>')
+def serve_static(path):
+    if os.path.exists(os.path.join(app.static_folder, path)):
+        return send_from_directory(app.static_folder, path)
+    else:
+        return send_from_directory(app.static_folder, 'index.html')
 if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host='0.0.0.0', port=port, debug=True)
+    app.run(debug=True)

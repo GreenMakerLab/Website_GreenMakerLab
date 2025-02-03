@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { createArticles } from "../api"; 
+import { createArticles,deleteArticle, getArticles  } from "../api"; 
 import { useAuth } from "../context/AuthContext";
 
 function AdminPanel() {
@@ -10,7 +10,7 @@ function AdminPanel() {
     const [date, setDate] = useState("");
     const { isAuthenticated, logout } = useAuth();
     const [adminData, setAdminData] = useState(null);
-
+    const [articles, setArticles] = useState([]);
 
     useEffect(() => {
         const fetchAdminData = async () => {
@@ -32,15 +32,40 @@ function AdminPanel() {
             }
           };
 
+          //buscar artigos
+          const fetchArticles = async () => {
+            try {
+                const data = await getArticles();
+                setArticles(data || []);
+            } catch (error) {
+                console.error('Erro ao carregar artigos:', error);
+            }
+        };
+
         if (isAuthenticated) {
             fetchAdminData();
+            fetchArticles();
         }
+
     }, [isAuthenticated]);
 
     if (!isAuthenticated) {
         return <p>Você não está autorizado a acessar esta página.</p>;
     }
+   
+    //função para deletar os artigos
+    const handleDelete = async (id) =>{
+        try{
+            await deleteArticle(id);
+            alert("Artigo deletado com sucesso!");
+            setArticles(articles.filter(article => article.id !== id));
+        }catch(error){
+            console.error("Erro ao deletar o artig", error)
+            alert("Erro ao deletar artigo. Tente novamente em alguns minutos");
+        }
+    }
 
+    //função para adicionar os artigos
     const handleSubmit = async (e) => {
         e.preventDefault();
         try {
@@ -58,6 +83,8 @@ function AdminPanel() {
             setContent("");
             setDoi("");
             setDate("");
+            const data = await getArticles();
+            setArticles(data || []);
         } catch (error) {
             console.error("Erro ao criar artigo:", error);
             alert("Erro ao criar artigo. Tente novamente em alguns minutos");
@@ -117,6 +144,25 @@ function AdminPanel() {
                                 </button>
                             </div>
                         </form>
+                        <h2 className="text-2xl font-bold mt-6 mb-4">Artigos Criados</h2>
+                        <ul>
+                            {articles.length > 0 ? (
+                                articles.map((article) => (
+                                    <li key={article.id} className="border-b py-2">
+                                        <h3> <b>Título do artigo:</b> {article.title}</h3>
+                                        <p> <b>Resumo do artigo:</b> {article.resume}</p>
+                                        <button
+                                            onClick={() => handleDelete(article.id)}
+                                            className="bg-red-600 text-white px-4 py-2 mt-2 rounded-md hover:bg-red-700"
+                                        >
+                                            Remover
+                                        </button>
+                                    </li>
+                                ))
+                            ) : (
+                                <p>Não há artigos.</p>
+                            )}
+                        </ul>
                     </>
                 ) : (
                     <p>Carregando...</p>

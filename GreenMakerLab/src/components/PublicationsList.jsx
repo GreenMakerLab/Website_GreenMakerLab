@@ -71,7 +71,7 @@ function PublicationsList() {
                                     )}
                                     {article.pdf && (
                                         <a href={article.pdf} target="_blank">
-                                            <img src="./img/pdf.svg" alt="pdf" className="inline ml-2"/>
+                                            <img src="/img/pdf.svg" alt="pdf" className="inline ml-2"/>
                                         </a>
                                     )}
                                 </p>

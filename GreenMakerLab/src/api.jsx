@@ -1,10 +1,9 @@
-// api.js
 
-const API_URL = 'http://localhost:5000/api';
+const API_URL = 'http://GreenMakerLab.onrender.com/api';
 
 // Função para obter o cabeçalho de autenticação
 const getAuthHeader = () => {
-    const token = localStorage.getItem('access_token'); // Supondo que o token está salvo aqui após o login
+    const token = localStorage.getItem('access_token'); 
     return { 'Authorization': `Bearer ${token}` };
 };
 
@@ -20,23 +19,26 @@ export const getArticles = async () => {
 
 // Função para criar um artigo
 export const createArticles = async (article) => {
-    const response = await fetch(`${API_URL}/articles`, {
-        method: 'POST',
-        headers: {
+    try {
+        const response = await fetch(`${API_URL}/articles`, {
+          method: 'POST',
+          headers: {
             'Content-Type': 'application/json',
-            ...getAuthHeader()
-        },
-        body: JSON.stringify(article),
-    });
-
-    if (!response.ok) {
-        const error = await response.json();
-        throw new Error(error.message || 'Erro ao criar o artigo');
-    }
-
-    const responseData = await response.json();
-    return responseData;
-};
+            ...getAuthHeader(),
+          },
+          body: JSON.stringify(article),
+        });
+    
+        if (!response.ok) {
+          const errorText = await response.text(); 
+          throw new Error(errorText || 'Erro ao criar artigo');
+        }
+    
+        return await response.json(); 
+      } catch (error) {
+        throw new Error(error.message);
+      }
+    };
 
 // Função para deletar um artigo
 export const deleteArticle = async (id) => {
@@ -68,7 +70,7 @@ export const loginUser = async (username, password) => {
     const data = await response.json();
 
     if (response.ok) {
-        localStorage.setItem('access_token', data.access_token); // Salva o token
+        localStorage.setItem('access_token', data.access_token); 
         return data;
     } else {
         throw new Error(data.message || 'Erro no login');
