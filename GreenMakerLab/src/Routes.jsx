@@ -3,7 +3,7 @@ import Publications from './pages/Publications';
 import Team from './pages/Team';
 import AboutUs from './pages/AboutUs';
 import TablePeriodic from './pages/TablePeriodic';
-import AdminPanel from './pages/adminPanel';
+import AdminPanel from './pages/AdminPanel.jsx';
 import Login from './pages/Login.jsx';
 import Humanitarian from './components/elements/Humanitarian';
 import GreenChemistry from './components/elements/GreenChemistry';
